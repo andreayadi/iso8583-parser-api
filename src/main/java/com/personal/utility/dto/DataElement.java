@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class DataElement {
-    private String field;
+    private Integer field;
     private String usage;
     private Integer length;
     private String message;

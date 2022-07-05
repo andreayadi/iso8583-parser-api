@@ -28,37 +28,74 @@ public class IsoServicesImpl implements IsoServices {
     private ParsedResult parsedResult;
 
     private DataElement dataElement;
+
+    private List<DataElement> allData;
     
     private ReadJsonFiles jsonData = new ReadJsonFiles();
+
+    // Get bit elements array
+    private List<Elements> elements = jsonData.getIsoElements();
+
+    private String messageParse, bitActive;
+
+    private Integer lengthNeed;
 
     @Autowired
     private IsoValidator isoValidator;
 
     @Override
     public ResponseData<Object> parsingMessage(IsoMessage message) throws CustomNullException {
+        // Duplicate message to parse
+        messageParse = message.getMessage();
+
         // Iso message is empty?
         isoValidator.messageValidation(message.getMessage());
-        
-        // Get bit elements array
-        List<Elements> elements = jsonData.getIsoElements();
 
         // Storing all bit active and message
-        List<DataElement> allData = new ArrayList<>();
+        allData = new ArrayList<>();
         
         // Adding bit active and message to allData
-        dataElement = new DataElement("", "Bitmap", 16, "0000000000000000");
-        allData.add(dataElement);
-        dataElement = new DataElement("2", "Bitmap", 16, "0000000000000000");
-        allData.add(dataElement);
+        manualAddData("Header", 12, messageParse.substring(0,12));
+        messageParse = messageParse.substring(12);
+        manualAddData("Message Type Identifier (MTI)", 4, messageParse.substring(0,4));
+        messageParse = messageParse.substring(4);
+        manualAddData("Primary Bitmap", 16, messageParse.substring(0,16));
 
-        System.out.println(hex2Bin("FFFF"));
+        // Get binary value from primary bitmap
+        bitActive = hex2Bin(messageParse.substring(0,16)) ;
 
+        // Remove used message
+        messageParse = messageParse.substring(16);
+        
+        if(bitActive.charAt(0) == '1'){
+            bitActive += hex2Bin(messageParse.substring(0,16));
+        }
+        
+        for(int i = 0; i<bitActive.length(); i++){
+            
+            if(bitActive.charAt(i) == '1'){
+                
+                Elements element = elements.get(i);
+                
+                if(element.getFixed()){
+                    dataElement = new DataElement(element.getField(), element.getUsage(), element.getLength(), messageParse.substring(0,element.getLength()));
+                    allData.add(dataElement);
+                    messageParse = messageParse.substring(element.getLength());
+                } else {
+                    lengthNeed = Integer.parseInt(messageParse.substring(0, element.getLength()));
+                    dataElement = new DataElement(element.getField(), element.getUsage(), lengthNeed, messageParse.substring(element.getLength(),lengthNeed + element.getLength()));
+                    allData.add(dataElement);
+                    messageParse = messageParse.substring(element.getLength() + lengthNeed);
+                }
+            } 
+
+        }
         // Final parse result for response
         parsedResult = new ParsedResult(message.getMessage(), allData);
-        responseData = new ResponseData<>(200, "Success i guess", parsedResult);
+        responseData = new ResponseData<>(200, "Parsing Success", parsedResult);
         return responseData;
     }
-
+     
     @Override
     public String hex2Bin(String bitMessage) {
     String out = "";
@@ -120,6 +157,9 @@ public class IsoServicesImpl implements IsoServices {
     return out;
     }
 
-
-    
+    @Override
+    public void manualAddData(String usage, Integer length, String valueMsg) {
+        dataElement = new DataElement(null, usage, length, valueMsg);
+        allData.add(dataElement);
+    }  
 }

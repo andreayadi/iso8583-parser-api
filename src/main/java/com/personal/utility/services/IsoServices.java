@@ -7,4 +7,5 @@ import com.personal.utility.model.ResponseData;
 public interface IsoServices {
     ResponseData<Object> parsingMessage(IsoMessage message) throws CustomNullException;
     String hex2Bin(String bitMessage);
+    void manualAddData(String usage, Integer length, String valueMsg);
 }
