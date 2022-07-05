@@ -1,0 +1,1026 @@
+[
+  {
+    "field": 1,
+    "type": "Bitmap",
+    "fixed": true,
+    "length": 16,
+    "maxLength": 16,
+    "usage": "Secondary Bitmap"
+  },
+  {
+    "field": 2,
+    "type": "Numeric",
+    "fixed": false,
+    "length": 2,
+    "maxLength": 19,
+    "usage": "Primary Account Number (PAN)"
+  },
+  {
+    "field": 3,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 6,
+    "maxLength": 6,
+    "usage": "Processing Code"
+  },
+  {
+    "field": 4,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 12,
+    "maxLength": 12,
+    "usage": "Amount Transaction"
+  },
+  {
+    "field": 5,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 12,
+    "maxLength": 12,
+    "usage": "Amount, Settlement"
+  },
+  {
+    "field": 6,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 12,
+    "maxLength": 12,
+    "usage": "Amount, Cardholder Billing"
+  },
+  {
+    "field": 7,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 10,
+    "maxLength": 10,
+    "usage": "Transmission Date & Time"
+  },
+  {
+    "field": 8,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 8,
+    "maxLength": 8,
+    "usage": "Amount, Cardholder Billing Fee"
+  },
+  {
+    "field": 9,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 8,
+    "maxLength": 8,
+    "usage": "Conversion Rate, Settlement"
+  },
+  {
+    "field": 10,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 8,
+    "maxLength": 8,
+    "usage": "Conversion Rate, Cardholder Billing"
+  },
+  {
+    "field": 11,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 6,
+    "maxLength": 6,
+    "usage": "System Trace Audit Number (STAN)"
+  },
+  {
+    "field": 12,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 6,
+    "maxLength": 6,
+    "usage": "Local Transaction Time (hhmmss)"
+  },
+  {
+    "field": 13,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 4,
+    "maxLength": 4,
+    "usage": "Local Transaction Date (MMDD)"
+  },
+  {
+    "field": 14,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 4,
+    "maxLength": 4,
+    "usage": "Expiration Date"
+  },
+  {
+    "field": 15,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 4,
+    "maxLength": 4,
+    "usage": "Settlement Date"
+  },
+  {
+    "field": 16,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 4,
+    "maxLength": 4,
+    "usage": "Currency Conversion Date"
+  },
+  {
+    "field": 17,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 4,
+    "maxLength": 4,
+    "usage": "Capture Date"
+  },
+  {
+    "field": 18,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 4,
+    "maxLength": 4,
+    "usage": "Merchant type, or Merchant Category Code"
+  },
+  {
+    "field": 19,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 3,
+    "maxLength": 3,
+    "usage": "Acquiring Institution (Country Code)"
+  },
+  {
+    "field": 20,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 3,
+    "maxLength": 3,
+    "usage": "PAN Extended (Country Code)"
+  },
+  {
+    "field": 21,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 3,
+    "maxLength": 3,
+    "usage": "Forwarding Institution (Country Code)"
+  },
+  {
+    "field": 22,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 3,
+    "maxLength": 3,
+    "usage": "Point of Service Entry Mode"
+  },
+  {
+    "field": 23,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 3,
+    "maxLength": 3,
+    "usage": "Application PAN Sequence Number"
+  },
+  {
+    "field": 24,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 3,
+    "maxLength": 3,
+    "usage": "Function code (ISO 8583:1993), or Network International Identifier (NII)"
+  },
+  {
+    "field": 25,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 2,
+    "maxLength": 2,
+    "usage": "Point of Service Condition Code"
+  },
+  {
+    "field": 26,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 2,
+    "maxLength": 2,
+    "usage": "Point of Service Capture Code"
+  },
+  {
+    "field": 27,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 1,
+    "maxLength": 1,
+    "usage": "Authorizing Identification Response Length"
+  },
+  {
+    "field": 28,
+    "type": "X(C/D) + Numeric",
+    "fixed": true,
+    "length": 8,
+    "maxLength": 8,
+    "usage": "Amount, Transaction Fee"
+  },
+  {
+    "field": 29,
+    "type": "X(C/D) + Numeric",
+    "fixed": true,
+    "length": 8,
+    "maxLength": 8,
+    "usage": "Amount, Settlement Fee"
+  },
+  {
+    "field": 30,
+    "type": "X(C/D) + Numeric",
+    "fixed": true,
+    "length": 8,
+    "maxLength": 8,
+    "usage": "Amount, Transaction Processing Fee"
+  },
+  {
+    "field": 31,
+    "type": "X(C/D) + Numeric",
+    "fixed": true,
+    "length": 8,
+    "maxLength": 8,
+    "usage": "Amount, Settlement Processing Fee"
+  },
+  {
+    "field": 32,
+    "type": "Numeric",
+    "fixed": false,
+    "length": 2,
+    "maxLength": 11,
+    "usage": "Acquiring Institution Identification Code"
+  },
+  {
+    "field": 33,
+    "type": "Numeric",
+    "fixed": false,
+    "length": 2,
+    "maxLength": 11,
+    "usage": "Forwarding Institution Identification Code"
+  },
+  {
+    "field": 34,
+    "type": "Numeric Symbol",
+    "fixed": false,
+    "length": 2,
+    "maxLength": 28,
+    "usage": "Primary Account Number, Extended"
+  },
+  {
+    "field": 35,
+    "type": "Track 2 Data",
+    "fixed": false,
+    "length": 2,
+    "maxLength": 37,
+    "usage": "Track 2 Data"
+  },
+  {
+    "field": 36,
+    "type": "Numeric",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 104,
+    "usage": "Track 3 Data"
+  },
+  {
+    "field": 37,
+    "type": "Alpha Numeric",
+    "fixed": true,
+    "length": 12,
+    "maxLength": 12,
+    "usage": "Retrieval Reference Number"
+  },
+  {
+    "field": 38,
+    "type": "Alpha Numeric",
+    "fixed": true,
+    "length": 6,
+    "maxLength": 6,
+    "usage": "Authorization Identification Response"
+  },
+  {
+    "field": 39,
+    "type": "Alpha Numeric",
+    "fixed": true,
+    "length": 2,
+    "maxLength": 2,
+    "usage": "Response Code"
+  },
+  {
+    "field": 40,
+    "type": "Alpha Numeric",
+    "fixed": true,
+    "length": 3,
+    "maxLength": 3,
+    "usage": "Service Restriction Code"
+  },
+  {
+    "field": 41,
+    "type": "Alpha Numeric Symbol",
+    "fixed": true,
+    "length": 16,
+    "maxLength": 16,
+    "usage": "Card Acceptor Terminal Identification"
+  },
+  {
+    "field": 42,
+    "type": "Alpha Numeric Symbol",
+    "fixed": true,
+    "length": 15,
+    "maxLength": 15,
+    "usage": "Card Acceptor Identification Code"
+  },
+  {
+    "field": 43,
+    "type": "Alpha Numeric Symbol",
+    "fixed": true,
+    "length": 40,
+    "maxLength": 40,
+    "usage": "Card Acceptor Name/Location"
+  },
+  {
+    "field": 44,
+    "type": "Alpha Numeric",
+    "fixed": false,
+    "length": 2,
+    "maxLength": 25,
+    "usage": "Additional Response Data"
+  },
+  {
+    "field": 45,
+    "type": "Alpha Numeric",
+    "fixed": false,
+    "length": 2,
+    "maxLength": 76,
+    "usage": "Track 1 Data"
+  },
+  {
+    "field": 46,
+    "type": "Alpha Numeric",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Additional Data (ISO)"
+  },
+  {
+    "field": 47,
+    "type": "Alpha Numeric",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Additional Data (National)"
+  },
+  {
+    "field": 48,
+    "type": "Alpha Numeric",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Additional Data (Private)"
+  },
+  {
+    "field": 49,
+    "type": "Alpha or Numeric",
+    "fixed": true,
+    "length": 3,
+    "maxLength": 3,
+    "usage": "Currency Code, Transaction"
+  },
+  {
+    "field": 50,
+    "type": "Alpha or Numeric",
+    "fixed": true,
+    "length": 3,
+    "maxLength": 3,
+    "usage": "Currency Code, Settlement"
+  },
+  {
+    "field": 51,
+    "type": "Alpha or Numeric",
+    "fixed": true,
+    "length": 3,
+    "maxLength": 3,
+    "usage": "Currency Code, Cardholder Billing"
+  },
+  {
+    "field": 52,
+    "type": "Bitmap",
+    "fixed": true,
+    "length": 16,
+    "maxLength": 16,
+    "usage": "Personal Identification Number Data"
+  },
+  {
+    "field": 53,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 16,
+    "maxLength": 16,
+    "usage": "Security Related Control Information"
+  },
+  {
+    "field": 54,
+    "type": "Alpha Numeric",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 120,
+    "usage": "Additional Amounts"
+  },
+  {
+    "field": 55,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "ICC Data - EMV Having Multiple Tags"
+  },
+  {
+    "field": 56,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved (ISO)"
+  },
+  {
+    "field": 57,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved (National)"
+  },
+  {
+    "field": 58,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved (National)"
+  },
+  {
+    "field": 59,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved (National)"
+  },
+  {
+    "field": 60,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved (National)"
+  },
+  {
+    "field": 61,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved (Private)"
+  },
+  {
+    "field": 62,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved (Private)"
+  },
+  {
+    "field": 63,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved (Private)"
+  },
+  {
+    "field": 64,
+    "type": "Bitmap",
+    "fixed": true,
+    "length": 16,
+    "maxLength": 16,
+    "usage": "Message Authentication Code (MAC)"
+  },
+  {
+    "field": 65,
+    "type": "Bitmap",
+    "fixed": true,
+    "length": 1,
+    "maxLength": 1,
+    "usage": "Extended Bitmap Indicator"
+  },
+  {
+    "field": 66,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 1,
+    "maxLength": 1,
+    "usage": "Settlement Code"
+  },
+  {
+    "field": 67,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 2,
+    "maxLength": 2,
+    "usage": "Extended Payment Code"
+  },
+  {
+    "field": 68,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 3,
+    "maxLength": 3,
+    "usage": "Receiving Institution Country Code"
+  },
+  {
+    "field": 69,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 3,
+    "maxLength": 3,
+    "usage": "Settlement Institution Country Code"
+  },
+  {
+    "field": 70,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 3,
+    "maxLength": 3,
+    "usage": "Network Management Information Code"
+  },
+  {
+    "field": 71,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 4,
+    "maxLength": 4,
+    "usage": "Message Number"
+  },
+  {
+    "field": 72,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 4,
+    "maxLength": 4,
+    "usage": "Last Message's Number"
+  },
+  {
+    "field": 73,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 6,
+    "maxLength": 6,
+    "usage": "Action Date (YYMMDD)"
+  },
+  {
+    "field": 74,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 10,
+    "maxLength": 10,
+    "usage": "Number of Credits"
+  },
+  {
+    "field": 75,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 10,
+    "maxLength": 10,
+    "usage": "Credits, Reversal Number"
+  },
+  {
+    "field": 76,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 10,
+    "maxLength": 10,
+    "usage": "Number of Debits"
+  },
+  {
+    "field": 77,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 10,
+    "maxLength": 10,
+    "usage": "Debits, Reversal Number"
+  },
+  {
+    "field": 78,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 10,
+    "maxLength": 10,
+    "usage": "Transfer Number"
+  },
+  {
+    "field": 79,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 10,
+    "maxLength": 10,
+    "usage": "Transfer, Reversal Number"
+  },
+  {
+    "field": 80,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 10,
+    "maxLength": 10,
+    "usage": "Number of Inquiries"
+  },
+  {
+    "field": 81,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 10,
+    "maxLength": 10,
+    "usage": "Number of Authorizations"
+  },
+  {
+    "field": 82,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 12,
+    "maxLength": 12,
+    "usage": "Credits, Processing Fee Amount"
+  },
+  {
+    "field": 83,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 12,
+    "maxLength": 12,
+    "usage": "Credits, Transaction Fee Amount"
+  },
+  {
+    "field": 84,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 12,
+    "maxLength": 12,
+    "usage": "Debits, Processing Fee Amount"
+  },
+  {
+    "field": 85,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 12,
+    "maxLength": 12,
+    "usage": "Debits, Transaction Fee Amount"
+  },
+  {
+    "field": 86,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 16,
+    "maxLength": 16,
+    "usage": "Total Amount of Credits"
+  },
+  {
+    "field": 87,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 16,
+    "maxLength": 16,
+    "usage": "Credits, Reversal Amount"
+  },
+  {
+    "field": 88,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 16,
+    "maxLength": 16,
+    "usage": "Total Amount of Debits"
+  },
+  {
+    "field": 89,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 16,
+    "maxLength": 16,
+    "usage": "Debits, Reversal Amount"
+  },
+  {
+    "field": 90,
+    "type": "Numeric",
+    "fixed": true,
+    "length": 42,
+    "maxLength": 42,
+    "usage": "Original Data Elements"
+  },
+  {
+    "field": 91,
+    "type": "Alpha Numeric",
+    "fixed": true,
+    "length": 1,
+    "maxLength": 1,
+    "usage": "File Update Code"
+  },
+  {
+    "field": 92,
+    "type": "Alpha Numeric",
+    "fixed": true,
+    "length": 2,
+    "maxLength": 2,
+    "usage": "File Security Code"
+  },
+  {
+    "field": 93,
+    "type": "Alpha Numeric",
+    "fixed": true,
+    "length": 5,
+    "maxLength": 5,
+    "usage": "Response Indicator"
+  },
+  {
+    "field": 94,
+    "type": "Alpha Numeric",
+    "fixed": true,
+    "length": 7,
+    "maxLength": 7,
+    "usage": "Service Indicator"
+  },
+  {
+    "field": 95,
+    "type": "Alpha Numeric",
+    "fixed": true,
+    "length": 42,
+    "maxLength": 42,
+    "usage": "Replacement Amounts"
+  },
+  {
+    "field": 96,
+    "type": "Bitmap",
+    "fixed": true,
+    "length": 16,
+    "maxLength": 16,
+    "usage": "Message Security Code"
+  },
+  {
+    "field": 97,
+    "type": "X(C/D) + Numeric",
+    "fixed": true,
+    "length": 16,
+    "maxLength": 16,
+    "usage": "Net Settlement Amount"
+  },
+  {
+    "field": 98,
+    "type": "Alpha Numeric Symbol",
+    "fixed": true,
+    "length": 25,
+    "maxLength": 25,
+    "usage": "Payee"
+  },
+  {
+    "field": 99,
+    "type": "Numeric",
+    "fixed": false,
+    "length": 2,
+    "maxLength": 11,
+    "usage": "Settlement Institution Identification Code"
+  },
+  {
+    "field": 100,
+    "type": "Numeric",
+    "fixed": false,
+    "length": 2,
+    "maxLength": 11,
+    "usage": "Receiving Institution Identification Code"
+  },
+  {
+    "field": 101,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 2,
+    "maxLength": 17,
+    "usage": "File Name"
+  },
+  {
+    "field": 102,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 2,
+    "maxLength": 28,
+    "usage": "Account Identification 1"
+  },
+  {
+    "field": 103,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 2,
+    "maxLength": 28,
+    "usage": "Account Identification 2"
+  },
+  {
+    "field": 104,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 100,
+    "usage": "Transaction Description"
+  },
+  {
+    "field": 105,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved for ISO use"
+  },
+  {
+    "field": 106,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved for ISO use"
+  },
+  {
+    "field": 107,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved for ISO use"
+  },
+  {
+    "field": 108,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved for ISO use"
+  },
+  {
+    "field": 109,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved for ISO use"
+  },
+  {
+    "field": 110,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved for ISO use"
+  },
+  {
+    "field": 111,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved for ISO use"
+  },
+  {
+    "field": 112,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved for National use"
+  },
+  {
+    "field": 113,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved for National use"
+  },
+  {
+    "field": 114,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved for National use"
+  },
+  {
+    "field": 115,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved for National use"
+  },
+  {
+    "field": 116,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved for National use"
+  },
+  {
+    "field": 117,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved for National use"
+  },
+  {
+    "field": 118,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved for National use"
+  },
+  {
+    "field": 119,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved for National use"
+  },
+  {
+    "field": 120,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved for Private use"
+  },
+  {
+    "field": 121,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved for Private use"
+  },
+  {
+    "field": 122,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved for Private use"
+  },
+  {
+    "field": 123,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved for Private use"
+  },
+  {
+    "field": 124,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved for Private use"
+  },
+  {
+    "field": 125,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved for Private use"
+  },
+  {
+    "field": 126,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved for Private use"
+  },
+  {
+    "field": 127,
+    "type": "Alpha Numeric Symbol",
+    "fixed": false,
+    "length": 3,
+    "maxLength": 999,
+    "usage": "Reserved for Private use"
+  },
+  {
+    "field": 128,
+    "type": "Bitmap",
+    "fixed": true,
+    "length": 16,
+    "maxLength": 16,
+    "usage": "Message Authentication Code"
+  }
+]

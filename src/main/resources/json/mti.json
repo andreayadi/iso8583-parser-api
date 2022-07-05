@@ -1,0 +1,118 @@
+[
+  [
+    {
+      "code": 0,
+      "meaning": "ISO 8583:1987"
+    },
+    {
+      "code": 1,
+      "meaning": "ISO 8583:1993"
+    },
+    {
+      "code": 2,
+      "meaning": "ISO 8583:2003"
+    },
+    {
+      "code": 8,
+      "meaning": "National Use"
+    },
+    {
+      "code": 9,
+      "meaning": "Private Use"
+    }
+  ],
+  [
+    {
+      "code": 1,
+      "meaning": "Authorization"
+    },
+    {
+      "code": 2,
+      "meaning": "Financial"
+    },
+    {
+      "code": 3,
+      "meaning": "File Actions"
+    },
+    {
+      "code": 4,
+      "meaning": "Reversal and Chargeback"
+    },
+    {
+      "code": 5,
+      "meaning": "Reconciliation"
+    },
+    {
+      "code": 6,
+      "meaning": "Administrative"
+    },
+    {
+      "code": 7,
+      "meaning": "Fee Collection"
+    },
+    {
+      "code": 8,
+      "meaning": "Network Management"
+    }
+  ],
+  [
+    {
+      "code": 0,
+      "meaning": "Request"
+    },
+    {
+      "code": 1,
+      "meaning": "Request Response"
+    },
+    {
+      "code": 2,
+      "meaning": "Advice"
+    },
+    {
+      "code": 3,
+      "meaning": "Advice Response"
+    },
+    {
+      "code": 4,
+      "meaning": "Notification"
+    },
+    {
+      "code": 5,
+      "meaning": "Notification Acknowledgement"
+    },
+    {
+      "code": 6,
+      "meaning": "Instruction"
+    },
+    {
+      "code": 7,
+      "meaning": "Instruction Acknowledgement"
+    }
+  ],
+  [
+    {
+      "code": 0,
+      "meaning": "Acquirer"
+    },
+    {
+      "code": 1,
+      "meaning": "Acquirer Repeat"
+    },
+    {
+      "code": 2,
+      "meaning": "Issuer"
+    },
+    {
+      "code": 3,
+      "meaning": "Issuer Repeat"
+    },
+    {
+      "code": 4,
+      "meaning": "Other"
+    },
+    {
+      "code": 5,
+      "meaning": "Other Repeat"
+    }
+  ]
+]
