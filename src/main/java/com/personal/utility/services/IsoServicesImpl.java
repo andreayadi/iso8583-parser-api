@@ -10,11 +10,13 @@ import org.springframework.transaction.annotation.Transactional;
 import com.personal.utility.dto.DataElement;
 import com.personal.utility.dto.Elements;
 import com.personal.utility.dto.IsoMessage;
-import com.personal.utility.dto.ParsedResult;
+import com.personal.utility.dto.ResponseData;
 import com.personal.utility.exception.custom.CustomNullException;
-import com.personal.utility.model.ResponseData;
+import com.personal.utility.model.IsoResult;
+import com.personal.utility.repository.IsoResultRepository;
+import com.personal.utility.util.Helper;
 import com.personal.utility.util.ReadJsonFiles;
-import com.personal.utility.validator.IsoValidator;
+import com.personal.utility.validation.IsoValidator;
 
 import lombok.NoArgsConstructor;
 
@@ -33,28 +35,29 @@ public class IsoServicesImpl implements IsoServices {
     private ReadJsonFiles jsonData = new ReadJsonFiles();
     private List<Elements> elements = jsonData.getIsoElements();
 
+    private Helper helper = new Helper();
+
     @Autowired
     private IsoValidator isoValidator;
 
+    @Autowired
+    private IsoResultRepository isoResultRepository;
+
     @Override
     public ResponseData<Object> parsingMessage(IsoMessage message) throws CustomNullException {
+      IsoResult messageResult;
+      String dataMessage, messageParse, bitActive, dataUsage;
+      Integer lengthNeed, dataField, dataLength;
+
+      dataMessage = message.getMessage();
+
+      messageParse = dataMessage;
+
+      isoValidator.messageValidation(dataMessage);
+
+      allData = new ArrayList<>();
+      
       try {
-        // Variable for processing data
-        ParsedResult parsedResult;
-        String dataMessage, messageParse, bitActive, dataUsage;
-        Integer lengthNeed, dataField, dataLength;
-
-        dataMessage = message.getMessage();
-
-        // Not using original message
-        messageParse = dataMessage;
-
-        // Iso message is empty validation
-        isoValidator.messageValidation(dataMessage);
-
-        // To keep all bit active result and message
-        allData = new ArrayList<>();
-        
         // Checking if message had header
         if (messageParse.substring(0,3).equalsIgnoreCase("ISO")) {
           manualAddData("Header", 12, messageParse.substring(0,12));
@@ -68,13 +71,13 @@ public class IsoServicesImpl implements IsoServices {
         manualAddData("Primary Bitmap", 16, messageParse.substring(0,16));
 
         // Get binary value from primary bitmap
-        bitActive = hex2Bin(messageParse.substring(0,16)) ;
+        bitActive = helper.hex2Bin(messageParse.substring(0,16)) ;
 
         // Remove used message
         messageParse = messageParse.substring(16);
         
         if(bitActive.charAt(0) == '1'){
-            bitActive += hex2Bin(messageParse.substring(0,16));
+            bitActive += helper.hex2Bin(messageParse.substring(0,16));
         }
         
         for(int i = 0; i<bitActive.length(); i++){
@@ -99,77 +102,26 @@ public class IsoServicesImpl implements IsoServices {
             } 
 
         }
+        
         // Final parse result for response
-        parsedResult = new ParsedResult(dataMessage, allData);
-        responseData = new ResponseData<>(200, "Message Parsed Succesfully", parsedResult);
-        return responseData;
+        try {
+          messageResult = new IsoResult(dataMessage, allData);
+  
+          isoResultRepository.save(messageResult);
+  
+          responseData = new ResponseData<>(200, "Message Parsed Succesfully", messageResult);
+          return responseData;
+        } catch (Exception e) {
+          responseData = new ResponseData<>(500, "Failed To Save to Database", null);
+          return responseData;
+        }
+
       } catch (Exception e) {
         responseData = new ResponseData<>(400, "Wrong Format Message", null);
         return responseData;
       } 
     }
      
-    @Override
-    public String hex2Bin(String bitMessage) {
-    String out = "";
-
-    for(int i=0; i<bitMessage.length(); i++){
-        switch (bitMessage.charAt(i)) {
-        case '0':
-        out += "0000";
-        break;
-      case '1':
-        out += "0001";
-        break;
-      case '2':
-        out += "0010";
-        break;
-      case '3':
-        out += "0011";
-        break;
-      case '4':
-        out += "0100";
-        break;
-      case '5':
-        out += "0101";
-        break;
-      case '6':
-        out += "0110";
-        break;
-      case '7':
-        out += "0111";
-        break;
-      case '8':
-        out += "1000";
-        break;
-      case '9':
-        out += "1001";
-        break;
-      case 'A':
-        out += "1010";
-        break;
-      case 'B':
-        out += "1011";
-        break;
-      case 'C':
-        out += "1100";
-        break;
-      case 'D':
-        out += "1101";
-        break;
-      case 'E':
-        out += "1110";
-        break;
-      case 'F':
-        out += "1111";
-        break;
-      default:
-        return "";
-        }
-    }
-    return out;
-    }
-
     @Override
     public void manualAddData(String usage, Integer length, String valueMsg) {
         dataElement = new DataElement(null, usage, length, valueMsg);

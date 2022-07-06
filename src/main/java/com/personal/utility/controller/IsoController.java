@@ -2,16 +2,18 @@ package com.personal.utility.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.personal.utility.dto.IsoMessage;
+import com.personal.utility.dto.ResponseData;
 import com.personal.utility.exception.custom.CustomNullException;
-import com.personal.utility.model.ResponseData;
 import com.personal.utility.services.IsoServices;
 
+@CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping("/iso")
 public class IsoController {

@@ -1,4 +1,4 @@
-package com.personal.utility.validator;
+package com.personal.utility.validation;
 
 import org.springframework.stereotype.Service;
 
@@ -9,7 +9,7 @@ public class IsoValidator {
     
     public void messageValidation(String message) throws CustomNullException{
         if(message.isEmpty()) {
-            throw new CustomNullException("Message is not Valid");
+            throw new CustomNullException("Message Cannot be Empty");
         }
-    }
+    }    
 }
