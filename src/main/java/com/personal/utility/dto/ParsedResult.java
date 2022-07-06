@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ParsedResult {
-    private String isoMsg;
+    private String isoMessage;
     private List<DataElement> data;
 }

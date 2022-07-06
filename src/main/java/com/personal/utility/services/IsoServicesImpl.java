@@ -25,37 +25,44 @@ public class IsoServicesImpl implements IsoServices {
 
     private ResponseData<Object> responseData;
 
-    private ParsedResult parsedResult;
-
+    // Storing bit active result
+    private List<DataElement> allData;
     private DataElement dataElement;
 
-    private List<DataElement> allData;
-    
+    // Reading Json Files
     private ReadJsonFiles jsonData = new ReadJsonFiles();
-
     private List<Elements> elements = jsonData.getIsoElements();
-
-    private String messageParse, bitActive;
-
-    private Integer lengthNeed;
 
     @Autowired
     private IsoValidator isoValidator;
 
     @Override
     public ResponseData<Object> parsingMessage(IsoMessage message) throws CustomNullException {
-        // Duplicate message to parse
-        messageParse = message.getMessage();
+      try {
+        // Variable for processing data
+        ParsedResult parsedResult;
+        String dataMessage, messageParse, bitActive, dataUsage;
+        Integer lengthNeed, dataField, dataLength;
 
-        // Iso message is empty?
-        isoValidator.messageValidation(message.getMessage());
+        dataMessage = message.getMessage();
 
-        // Storing all bit active and message
+        // Not using original message
+        messageParse = dataMessage;
+
+        // Iso message is empty validation
+        isoValidator.messageValidation(dataMessage);
+
+        // To keep all bit active result and message
         allData = new ArrayList<>();
         
-        // Adding bit active and message to allData
-        manualAddData("Header", 12, messageParse.substring(0,12));
-        messageParse = messageParse.substring(12);
+        // Checking if message had header
+        if (messageParse.substring(0,3).equalsIgnoreCase("ISO")) {
+          manualAddData("Header", 12, messageParse.substring(0,12));
+          messageParse = messageParse.substring(12);
+          System.out.println("yes header");
+        }
+        
+        // Adding bit active and message without field to allData
         manualAddData("Message Type Identifier (MTI)", 4, messageParse.substring(0,4));
         messageParse = messageParse.substring(4);
         manualAddData("Primary Bitmap", 16, messageParse.substring(0,16));
@@ -75,24 +82,31 @@ public class IsoServicesImpl implements IsoServices {
             if(bitActive.charAt(i) == '1'){
                 
                 Elements element = elements.get(i);
-                
+                dataField = element.getField();
+                dataUsage = element.getUsage();
+                dataLength = element.getLength();
+
                 if(element.getFixed()){
-                    dataElement = new DataElement(element.getField(), element.getUsage(), element.getLength(), messageParse.substring(0,element.getLength()));
+                    dataElement = new DataElement(dataField, dataUsage, dataLength, messageParse.substring(0,dataLength));
                     allData.add(dataElement);
-                    messageParse = messageParse.substring(element.getLength());
+                    messageParse = messageParse.substring(dataLength);
                 } else {
-                    lengthNeed = Integer.parseInt(messageParse.substring(0, element.getLength()));
-                    dataElement = new DataElement(element.getField(), element.getUsage(), lengthNeed, messageParse.substring(element.getLength(),lengthNeed + element.getLength()));
+                    lengthNeed = Integer.parseInt(messageParse.substring(0, dataLength));
+                    dataElement = new DataElement(dataField, dataUsage, lengthNeed, messageParse.substring(dataLength,lengthNeed + dataLength));
                     allData.add(dataElement);
-                    messageParse = messageParse.substring(element.getLength() + lengthNeed);
+                    messageParse = messageParse.substring(dataLength + lengthNeed);
                 }
             } 
 
         }
         // Final parse result for response
-        parsedResult = new ParsedResult(message.getMessage(), allData);
-        responseData = new ResponseData<>(200, "Parsing Success", parsedResult);
+        parsedResult = new ParsedResult(dataMessage, allData);
+        responseData = new ResponseData<>(200, "Message Parsed Succesfully", parsedResult);
         return responseData;
+      } catch (Exception e) {
+        responseData = new ResponseData<>(400, "Wrong Format Message", null);
+        return responseData;
+      } 
     }
      
     @Override
