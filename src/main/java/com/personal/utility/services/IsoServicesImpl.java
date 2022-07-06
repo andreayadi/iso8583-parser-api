@@ -33,7 +33,6 @@ public class IsoServicesImpl implements IsoServices {
     
     private ReadJsonFiles jsonData = new ReadJsonFiles();
 
-    // Get bit elements array
     private List<Elements> elements = jsonData.getIsoElements();
 
     private String messageParse, bitActive;
