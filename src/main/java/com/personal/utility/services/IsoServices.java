@@ -6,5 +6,6 @@ import com.personal.utility.exception.custom.CustomNullException;
 
 public interface IsoServices {
     ResponseData<Object> parsingMessage(IsoMessage message) throws CustomNullException;
+    ResponseData<Object> getAllData();
     void manualAddData(String usage, Integer length, String valueMsg);
 }

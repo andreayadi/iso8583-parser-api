@@ -62,7 +62,6 @@ public class IsoServicesImpl implements IsoServices {
         if (messageParse.substring(0,3).equalsIgnoreCase("ISO")) {
           manualAddData("Header", 12, messageParse.substring(0,12));
           messageParse = messageParse.substring(12);
-          System.out.println("yes header");
         }
         
         // Adding bit active and message without field to allData
@@ -107,7 +106,7 @@ public class IsoServicesImpl implements IsoServices {
         try {
           messageResult = new IsoResult(dataMessage, allData);
   
-          isoResultRepository.save(messageResult);
+          // isoResultRepository.save(messageResult);
   
           responseData = new ResponseData<>(200, "Message Parsed Succesfully", messageResult);
           return responseData;
@@ -121,10 +120,24 @@ public class IsoServicesImpl implements IsoServices {
         return responseData;
       } 
     }
-     
+    
     @Override
     public void manualAddData(String usage, Integer length, String valueMsg) {
-        dataElement = new DataElement(null, usage, length, valueMsg);
-        allData.add(dataElement);
+      dataElement = new DataElement(null, usage, length, valueMsg);
+      allData.add(dataElement);
+    }
+    
+    @Override
+    public ResponseData<Object> getAllData() {
+      try {
+        List<IsoResult> isoResult = isoResultRepository.findAll();
+
+        responseData = new ResponseData<>(200, "Success get All Data", isoResult);
+        return responseData;
+      } catch (Exception e) {
+        responseData = new ResponseData<>(400, "Failed to get All Data", null);
+        return responseData;
+      }
+
     }  
 }

@@ -3,6 +3,7 @@ package com.personal.utility.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,12 @@ public class IsoController {
     @PostMapping
     public ResponseEntity<?> parseMessage(@RequestBody IsoMessage message) throws CustomNullException{
         responseData = isoServices.parsingMessage(message);
+        return ResponseEntity.status(responseData.getStatus()).body(responseData);
+    }
+
+    @GetMapping
+    public ResponseEntity<?> getAllMessage(){
+        responseData = isoServices.getAllData();
         return ResponseEntity.status(responseData.getStatus()).body(responseData);
     }
 }
