@@ -17,4 +17,5 @@ public class CustomExceptionHandler {
 
         return ResponseEntity.status(errorMessage.getStatus()).body(errorMessage);
     }
+
 }

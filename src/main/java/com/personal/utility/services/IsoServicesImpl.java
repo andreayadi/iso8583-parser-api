@@ -2,6 +2,7 @@ package com.personal.utility.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,9 +35,10 @@ public class IsoServicesImpl implements IsoServices {
     // Reading Json Files
     private ReadJsonFiles jsonData = new ReadJsonFiles();
     private List<Elements> elements = jsonData.getIsoElements();
-
+    
     private Helper helper = new Helper();
-
+    
+    private IsoResult messageResult;
     @Autowired
     private IsoValidator isoValidator;
 
@@ -45,7 +47,6 @@ public class IsoServicesImpl implements IsoServices {
 
     @Override
     public ResponseData<Object> parsingMessage(IsoMessage message) throws CustomNullException {
-      IsoResult messageResult;
       String dataMessage, messageParse, bitActive, dataUsage;
       Integer lengthNeed, dataField, dataLength;
 
@@ -106,7 +107,7 @@ public class IsoServicesImpl implements IsoServices {
         try {
           messageResult = new IsoResult(dataMessage, allData);
   
-          // isoResultRepository.save(messageResult);
+          isoResultRepository.save(messageResult);
   
           responseData = new ResponseData<>(200, "Message Parsed Succesfully", messageResult);
           return responseData;
@@ -139,5 +140,23 @@ public class IsoServicesImpl implements IsoServices {
         return responseData;
       }
 
+    }
+
+    @Override
+    public ResponseData<Object> deleteMessage(IsoMessage message) throws CustomNullException {
+      try {
+        
+        Optional<IsoResult> resultOpt = isoResultRepository.findById(message.getMessage());
+        if(resultOpt.isEmpty()) throw new CustomNullException("Id Invalid");
+
+        isoResultRepository.deleteById(message.getMessage());
+
+        responseData = new ResponseData<>(200, "Message Deleted", null);
+        return responseData;
+      } catch (Exception e) {
+        responseData = new ResponseData<>(400, "Failed to Delete Message", null);
+        return responseData;
+      }
+      
     }  
 }

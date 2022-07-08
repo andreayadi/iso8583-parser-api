@@ -3,6 +3,7 @@ package com.personal.utility.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,10 +30,16 @@ public class IsoController {
         responseData = isoServices.parsingMessage(message);
         return ResponseEntity.status(responseData.getStatus()).body(responseData);
     }
-
+    
     @GetMapping
     public ResponseEntity<?> getAllMessage(){
         responseData = isoServices.getAllData();
+        return ResponseEntity.status(responseData.getStatus()).body(responseData);
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<?> deleteMessage(@RequestBody IsoMessage message) throws CustomNullException{
+        responseData = isoServices.deleteMessage(message);
         return ResponseEntity.status(responseData.getStatus()).body(responseData);
     }
 }
