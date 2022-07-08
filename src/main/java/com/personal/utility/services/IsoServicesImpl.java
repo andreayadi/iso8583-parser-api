@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,6 +41,7 @@ public class IsoServicesImpl implements IsoServices {
     private Helper helper = new Helper();
     
     private IsoResult messageResult;
+
     @Autowired
     private IsoValidator isoValidator;
 
@@ -130,7 +133,9 @@ public class IsoServicesImpl implements IsoServices {
     
     @Override
     public ResponseData<Object> getAllData() {
+
       try {
+
         List<IsoResult> isoResult = isoResultRepository.findAll();
 
         responseData = new ResponseData<>(200, "Success get All Data", isoResult);
@@ -158,5 +163,14 @@ public class IsoServicesImpl implements IsoServices {
         return responseData;
       }
       
+    }
+    
+    @Override
+    public ResponseData<Object> getAllDataPage(Pageable reqPage) {
+      
+      Page<IsoResult> pageResult = isoResultRepository.findAll(reqPage);
+      
+      responseData = new ResponseData<>(200, "Paging Data Success", pageResult);
+      return responseData;
     }  
 }

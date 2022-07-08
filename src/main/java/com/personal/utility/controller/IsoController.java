@@ -1,6 +1,7 @@
 package com.personal.utility.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,21 +26,28 @@ public class IsoController {
     @Autowired
     private IsoServices isoServices;
 
+
     @PostMapping
     public ResponseEntity<?> parseMessage(@RequestBody IsoMessage message) throws CustomNullException{
         responseData = isoServices.parsingMessage(message);
         return ResponseEntity.status(responseData.getStatus()).body(responseData);
     }
     
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<?> getAllMessage(){
         responseData = isoServices.getAllData();
         return ResponseEntity.status(responseData.getStatus()).body(responseData);
     }
-
+    
     @DeleteMapping("/delete")
     public ResponseEntity<?> deleteMessage(@RequestBody IsoMessage message) throws CustomNullException{
         responseData = isoServices.deleteMessage(message);
+        return ResponseEntity.status(responseData.getStatus()).body(responseData);
+    }
+    
+    @GetMapping
+    public ResponseEntity<?> getAllPage(Pageable page){
+        responseData = isoServices.getAllDataPage(page);
         return ResponseEntity.status(responseData.getStatus()).body(responseData);
     }
 }
