@@ -1,4 +1,4 @@
-package com.personal.utility.model;
+package com.personal.utility.model.utility;
 
 import java.util.List;
 
