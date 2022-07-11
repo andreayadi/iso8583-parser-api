@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "testingcollection")
+@Document(collection = "testing")
 public class PtlfResult {
     
     private String id;
