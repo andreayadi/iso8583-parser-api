@@ -3,10 +3,12 @@ package com.personal.utility.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.personal.utility.dto.PtlfDate;
 import com.personal.utility.dto.ResponseData;
 import com.personal.utility.services.PtlfServices;
 
@@ -20,9 +22,9 @@ public class PtlfController {
     @Autowired
     private PtlfServices ptlfServices;
 
-    @GetMapping
-    public ResponseEntity<?> getData(){
-        responseData =  ptlfServices.getDataPtlf();
+    @PostMapping
+    public ResponseEntity<?> getData(@RequestBody PtlfDate date){
+        responseData =  ptlfServices.getDataPtlf(date);
         return ResponseEntity.status(responseData.getStatus()).body(responseData);
     }
 }
