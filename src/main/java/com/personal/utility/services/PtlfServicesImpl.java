@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.personal.utility.dto.PtlfDate;
 import com.personal.utility.dto.ResponseData;
+import com.personal.utility.model.ptlf.PtlfResult;
 
 @Service
 @Transactional
@@ -20,9 +21,9 @@ public class PtlfServicesImpl implements PtlfServices {
     @Override
     public ResponseData<Object> getDataPtlf(PtlfDate date) {
         
-    Boolean dateSelected = mongoTemplate.collectionExists(date.getDate());
-        
-    responseData = new ResponseData<>(200, "Success", dateSelected);
+    PtlfResult testing = mongoTemplate.findById("62c46e11fb8e91e1c11f83be", PtlfResult.class, "220706");
+    
+    responseData = new ResponseData<>(200, "Success", testing);
     return responseData;
     }
     
