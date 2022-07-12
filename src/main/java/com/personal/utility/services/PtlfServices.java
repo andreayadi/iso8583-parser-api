@@ -1,9 +1,10 @@
 package com.personal.utility.services;
 
-import com.personal.utility.dto.PtlfDate;
+import org.springframework.data.domain.Pageable;
+
 import com.personal.utility.dto.ResponseData;
+import com.personal.utility.exception.custom.CustomNullException;
 
 public interface PtlfServices {
-    ResponseData<Object> getDataPtlf(PtlfDate date);
-    
+    ResponseData<Object> getDataPtlf(Pageable reqPage, String date) throws CustomNullException;
 }
