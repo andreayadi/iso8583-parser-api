@@ -31,7 +31,7 @@ public class PtlfServicesImpl implements PtlfServices {
             throw new CustomNullException("Date isn't Active");
         }
         try {
-            
+
             Query paginationQuery = new Query().with(reqPage);
             
             List<PtlfResult> ptlfResult = mongoTemplate.find(paginationQuery, PtlfResult.class, date);
@@ -51,5 +51,14 @@ public class PtlfServicesImpl implements PtlfServices {
             responseData = new ResponseData<Object>(500, "Failed to Get Data", e);
             return responseData;
         }
+    }
+    
+    @Override
+    public ResponseData<Object> getDataPtlfId(String date, String id) throws CustomNullException {
+
+        PtlfResult ptlfResult = mongoTemplate.findById(id, PtlfResult.class, date);
+        
+        responseData = new ResponseData<Object>(200, "Success to Get Data", ptlfResult);
+        return responseData;
     }
 }
