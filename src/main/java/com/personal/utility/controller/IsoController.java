@@ -16,7 +16,8 @@ import com.personal.utility.dto.ResponseData;
 import com.personal.utility.exception.custom.CustomNullException;
 import com.personal.utility.services.IsoServices;
 
-@CrossOrigin("http://localhost:3000")
+// @CrossOrigin("http://localhost:3000")
+@CrossOrigin("http://10.20.231.227:3000")
 @RestController
 @RequestMapping("/iso")
 public class IsoController {
